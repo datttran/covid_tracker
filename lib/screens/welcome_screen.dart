@@ -16,9 +16,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
   AnimationController controller;
-  String phoneNumber;
-  String confirmCode;
-  String verificationID;
+
 
   @override
   void initState() {
@@ -156,7 +154,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                                 'Log in with ',
                                 style: TextStyle(color: Colors.black, fontSize: verticalPixel*2  )
                             ),
-                            Text(' Google',
+                            Text(' Omicron',
                               style: TextStyle(color: Colors.white, fontSize: verticalPixel*2.5  ,fontStyle: FontStyle.italic),),
                           ],),
                       ),

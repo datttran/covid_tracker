@@ -17,7 +17,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   var left = Colors.black;
   var right =  Colors.white;
-
+  String phoneNumber;
+  String confirmCode;
+  String verificationID;
   int shareValue;
   colorCheck(){
     if(shareValue == 0){
@@ -160,11 +162,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextField(
                     onChanged: (value) {
                       //Do something with the user input.
+                      this.phoneNumber = value;
                     },
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.mail_outline),
 
-                      hintText: 'Enter your email',
+                      hintText: 'Enter your phone number',
                       contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                       border: OutlineInputBorder(
@@ -265,5 +268,3 @@ setColor(left  , right){
   };
 }
 
-var left = Colors.black;
-var right =  Colors.white;
