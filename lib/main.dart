@@ -15,6 +15,7 @@ class Votest extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+        accentColor: Colors.white,
         textTheme: TextTheme(
           body1: TextStyle(color: Colors.black54),
         ),

@@ -1,10 +1,12 @@
 
+import 'package:covidtracker/screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constant.dart';
 import 'package:covidtracker/responsive/size_config.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id  = 'welcomescreen';
@@ -12,13 +14,29 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  String phoneNumber;
+  String confirmCode;
+  String verificationID;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
+    controller = AnimationController(
+      duration: Duration(milliseconds: 700),
+      vsync: this,
+      lowerBound: .7,
+    );
+    controller.forward();
+    controller.addListener((){
+      setState(() {
 
+      });
+
+    });
 
 
   }
@@ -38,20 +56,38 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             end: Alignment.bottomRight,
 
           ),
-          image: DecorationImage(
-              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
-              image: AssetImage('images/background.png'),
-              fit: BoxFit.cover
-          ),
+//          //  <<<< background image goes here >>>>
+//          image: DecorationImage(
+//              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+//              image: AssetImage('images/background.png'),
+//              fit: BoxFit.cover
+//          ),
 
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: verticalPixel*15,
+              height: verticalPixel*13,
             ),
+            Hero(
+              tag: 'logo',
+              child: Container(
+
+                child: SvgPicture.asset('assets/logo.svg',
+                allowDrawingOutsideViewBox: true,
+                semanticsLabel: 'logo',
+                fit: BoxFit.contain,),
+                height: verticalPixel*12*(controller.value),
+
+
+              ),
+            ),
+            SizedBox(
+              height: verticalPixel*0,
+            ),
+
 
 
 
@@ -65,24 +101,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     children: <Widget>[
                       Text('Welcome to',
                         style: TextStyle(color: Colors.white, fontSize: verticalPixel*3.7),),
-                      Text(' Votest',
+                      Text(' Project O',
                         style: TextStyle(color: Color(0xffD63A23), fontSize: verticalPixel*3.7  ,fontStyle: FontStyle.italic),),
                     ],
                   ),
                 ),
 
                 SizedBox(height: verticalPixel,),
-                Text('A simple platform to \nsafely practice your',
+                Text('Help us stop the spread of ',
                     style: TextStyle(color: Colors.white, fontSize: verticalPixel*2)),
-                Text('rights',
+                Text('Coronavirus',
                     style: TextStyle(color: Colors.red, fontSize: verticalPixel*2)),
               ],
             ),
 
 
             SizedBox(
-              height: verticalPixel*50,
+              height: verticalPixel*30,
             ),
+
             Padding(
               padding: EdgeInsets.symmetric(vertical: verticalPixel*7),
               child: MaterialButton(
@@ -93,7 +130,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onPressed: () {
 
                     showCupertinoModalPopup(context: context, builder: (BuildContext context) =>
-                        null);
+                        LoginScreen(0));
 //                  showCupertinoModalPopup(context: context, builder: (BuildContext context) =>  );
                     //Go to login screen.
                   },
@@ -119,7 +156,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 'Log in with ',
                                 style: TextStyle(color: Colors.black, fontSize: verticalPixel*2  )
                             ),
-                            Text(' Votest',
+                            Text(' Google',
                               style: TextStyle(color: Colors.white, fontSize: verticalPixel*2.5  ,fontStyle: FontStyle.italic),),
                           ],),
                       ),
