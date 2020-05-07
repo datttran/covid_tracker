@@ -1,9 +1,8 @@
+import 'package:covidtracker/screens/optionLogin_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/welcome_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/registration_screen.dart';
-import 'screens/chat_screen.dart';
+
 
 //APP NAME: Votest //
 void main() => runApp(Votest());
@@ -26,6 +25,7 @@ class Votest extends StatelessWidget {
         //LoginScreen.id : (context) => LoginScreen(0),
         //RegistrationScreen.id : (context) => LoginScreen(1),
         //ChatScreen.id : (context) => ChatScreen(),
+        OptionScreen.id : (context) => OptionScreen(),
 
       },
     );

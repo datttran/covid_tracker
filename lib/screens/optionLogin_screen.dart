@@ -1,24 +1,24 @@
-
-import 'package:covidtracker/screens/login_screen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:covidtracker/constant.dart';
 import 'package:covidtracker/responsive/size_config.dart';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:ui';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gradient_text/gradient_text.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  static String id  = 'welcomescreen';
+import 'login_screen.dart';
+
+
+class OptionScreen extends StatefulWidget {
+  static String id = 'optionscreen';
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _OptionScreenState createState() => _OptionScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
+class _OptionScreenState extends State<OptionScreen> with SingleTickerProviderStateMixin{
   AnimationController controller;
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -75,9 +75,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               child: Container(
 
                 child: SvgPicture.asset('assets/logo.svg',
-                allowDrawingOutsideViewBox: true,
-                semanticsLabel: 'logo',
-                fit: BoxFit.contain,),
+                  allowDrawingOutsideViewBox: true,
+                  semanticsLabel: 'logo',
+                  fit: BoxFit.contain,),
                 height: verticalPixel*12*(controller.value),
 
 
@@ -98,27 +98,59 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Welcome to',
+                      Text('Project',
                         style: TextStyle(color: Colors.white, fontSize: verticalPixel*3.7),),
-                      Text(' Project O',
+                      Text(' Omicron     ',
                         style: TextStyle(color: Color(0xffc31432), fontSize: verticalPixel*3.7  ,fontStyle: FontStyle.italic),),
                     ],
                   ),
                 ),
 
-                SizedBox(height: verticalPixel,),
-                Text('Help us stop the spread of ',
-                    style: TextStyle(color: Colors.white, fontSize: verticalPixel*2)),
-                Text('Coronavirus',
-                    style: TextStyle(color: Colors.red, fontSize: verticalPixel*2)),
+                SizedBox(height: verticalPixel*5,),
+
+
+                SizedBox(
+                  height: verticalPixel*5,
+                ),
+
+              ],
+
+            ),
+            Text('Continue with',
+                style: TextStyle(color: Colors.white, fontSize: verticalPixel*2)),
+            SizedBox(
+              height: verticalPixel*3,
+            ),
+
+
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+
+
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SvgPicture.asset('assets/google.svg',width: verticalPixel*7),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SvgPicture.asset('assets/chat.svg',width: verticalPixel*7,),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SvgPicture.asset('assets/facebook.svg',width: verticalPixel*7),
+                ),
+
               ],
             ),
-
-
             SizedBox(
-              height: verticalPixel*30,
+              height: verticalPixel*3,
             ),
 
+
+            Text('Or',
+                style: TextStyle(color: Colors.white, fontSize: verticalPixel*2)),
             Padding(
               padding: EdgeInsets.symmetric(vertical: verticalPixel*5),
               child: MaterialButton(
@@ -134,8 +166,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 //                  showCupertinoModalPopup(context: context, builder: (BuildContext context) =>  );
                     //Go to login screen.
                   },
-              //D13D23
-              //D63A23
+                  //D13D23
+                  //D63A23
                   child: Ink(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -153,22 +185,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: <Widget>[
+
                             Text(
                                 'Countinue with ',
                                 style: TextStyle(color: Colors.white, fontSize: verticalPixel*2 ,fontWeight: FontWeight.w100 )
                             ),
-                        GradientText(" Omicron",
-                            gradient: LinearGradient(
-                                colors: [Color(0xffffcda5),  Color(0xffffcf1b), Color(0xffffcda5) ]),
-                            style: TextStyle(fontSize: verticalPixel*2.5 ,
+                            GradientText(" Omicron",
+                                gradient: LinearGradient(
+                                    colors: [Color(0xffffcda5),  Color(0xffffcf1b), Color(0xffffcda5) ]),
+                                style: TextStyle(fontSize: verticalPixel*2.5 ,
 
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w400,
+                                  fontStyle: FontStyle.italic,
 
 
 
-                            ),
-                            textAlign: TextAlign.center),
+                                ),
+                                textAlign: TextAlign.center),
 //                            Text(' Omicron',
 //                              style: TextStyle(color: Colors.white, fontSize: verticalPixel*2.5  ,fontStyle: FontStyle.italic),),
                           ],),
@@ -177,9 +210,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   )
               ),
             ),
-
             SizedBox(
-              height: verticalPixel*5,
+              height: verticalPixel*10,
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 4.0),
@@ -194,13 +226,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                 child: Text(
                   "Don't have an account? Sign up here",
                   style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: verticalPixel*1.7
+                      color: Colors.white70,
+                      fontSize: verticalPixel*1.7
 
                   ),
                 ),
               ),
             ),
+
+
+
+            SizedBox(
+              height: verticalPixel*2,
+            ),
+
           ],
         ),
       ),
